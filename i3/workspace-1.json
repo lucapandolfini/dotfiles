@@ -1,0 +1,82 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "none",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 562,
+       "width": 1334,
+       "x": 0,
+       "y": 0
+    },
+    "name": "Untitled Document 1 - gedit",
+    "percent": 0.5,
+    "swallows": [
+       {
+        "class": "Gedit"
+       // "instance": "^gedit$",
+       // "title": "^Untitled\\ Document\\ 1\\ \\-\\ gedit$",
+       // "transient_for": "^$",
+       // "window_role": "^gedit\\-window\\-1494887947\\-811813\\-0\\-portablepenguin$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    // splitv split container with 2 children
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 562,
+               "width": 1334,
+               "x": 0,
+               "y": 0
+            },
+            "name": "Terminal",
+            "percent": 0.77616714970742,
+            "swallows": [
+               {
+               "class": "Gnome-terminal"
+               // "instance": "^gnome\\-terminal\\-server$",
+               // "title": "^Terminal$",
+               // "transient_for": "^$",
+               // "window_role": "^gnome\\-terminal\\-window\\-293066db\\-9067\\-4749\\-b248\\-5ed5c97d403d$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 562,
+               "width": 1334,
+               "x": 0,
+               "y": 0
+            },
+            "name": "Terminal",
+            "percent": 0.22383285029258,
+            "swallows": [
+               {
+               "class": "Gnome-terminal"
+               // "instance": "^gnome\\-terminal\\-server$",
+               // "title": "^Terminal$",
+               // "transient_for": "^$",
+               // "window_role": "^gnome\\-terminal\\-window\\-440257e7\\-d7fa\\-4bd0\\-a9c3\\-3f8319a6a219$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
