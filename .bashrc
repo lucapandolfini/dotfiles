@@ -98,13 +98,16 @@ if [ -x /usr/bin/dircolors ]; then
     alias nemo='nemo --no-desktop'
 fi
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+stty -ixon
+
+#colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+alias lh='ls -lh'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -137,3 +140,4 @@ PATH=/home/luca/Apps/HOMER/bin:${PATH}
 PATH=/home/luca/Apps/meme/bin:${PATH}
 PATH=/home/luca/Apps/UCSC_tools:${PATH}
 PATH=/home/luca/Apps/subread-1.5.1/bin:${PATH}
+PATH=/home/luca/Apps/sratoolkit.2.8.1-3/bin:${PATH}
