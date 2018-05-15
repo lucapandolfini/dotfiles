@@ -160,15 +160,15 @@ set $workspace7 "7: Graphics "
 set $workspace8 "8: Office "
 set $workspace10 "10: Comms  "
 
-workspace $workspace1 output DP-2-1
-workspace $workspace2 output DP-2-1
-workspace $workspace3 output eDP-1
-workspace $workspace4 output eDP-1
-workspace $workspace5 output eDP-1
-workspace $workspace6 output DP-2-1
-workspace $workspace7 output DP-2-1
-workspace $workspace8 output DP-2-1
-workspace $workspace10 output eDP-1
+workspace $workspace1 output DP2-1
+workspace $workspace2 output DP2-1
+workspace $workspace3 output eDP1
+workspace $workspace4 output eDP1
+workspace $workspace5 output eDP1
+workspace $workspace6 output DP2-1
+workspace $workspace7 output DP2-1
+workspace $workspace8 output DP2-1
+workspace $workspace10 output eDP1
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -283,7 +283,7 @@ bar {
         font pango:FontAwesome , OCR A Extended Bold 14
         position top
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
-        tray_output eDP-1
+        tray_output eDP1
 }
 
 client.focused #888888 #22222 #888888 #888888 #888888
@@ -331,8 +331,8 @@ bindsym XF86Search exec --no-startup-id gnome-terminal
 bindsym $mod+XF86Search exec --no-startup-id /usr/bin/i3_Rsession.sh
 bindsym $mod+XF86Tools exec --no-startup-id gnome-system-monitor
 bindsym XF86Display exec --no-startup-id /usr/bin/i3_ext_mon.sh
-bindsym $mod+XF86Display exec --no-startup-id xrandr --output VGA-1 --off --output DP-2-1 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-2-2 --off --output DP-2-3 --off --output eDP-1 --primary --mode 2880x1620 --pos 0x1440 --rotate normal --output HDMI-2 --off --output HDMI-1 --off --output DP-2 --off --output DP-1 --off
-bindsym $mod+Shift+XF86Display exec --no-startup-id xrandr --output VGA-1 --off --output eDP-1 --primary --mode 2880x1620 --pos 0x1080 --rotate normal --output HDMI-2 --off --output HDMI-1 --mode 1920x1080 --pos 408x0 --rotate normal --output DP-2 --off --output DP-1 --off
+bindsym $mod+XF86Display exec --no-startup-id xrandr --output VGA1 --off --output DP-2-1 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-2-2 --off --output DP-2-3 --off --output eDP1 --primary --mode 2880x1620 --pos 0x1440 --rotate normal --output HDMI-2 --off --output HDMI-1 --off --output DP-2 --off --output DP-1 --off
+bindsym $mod+Shift+XF86Display exec --no-startup-id xrandr --output VIRTUAL1 --off --output eDP1 --mode 2880x1620 --pos 0x1080 --rotate normal --output DP1 --off --output DP2 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VGA1 --off
 
 bindsym $mod+Shift+b exec --no-startup-id /usr/bin/i3_toggleTrackpoint.sh
 bindsym $mod+t exec /opt/Telegram/Telegram
