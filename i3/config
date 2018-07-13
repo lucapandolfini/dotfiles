@@ -16,55 +16,6 @@ set $mod Mod4
 # Necessary for i3-gaps to work properly (pixel can be any value)
 for_window [class="^.*"] border pixel 4
 
-# Smart Gaps
-smart_gaps on
-
-# Smart Borders
-smart_borders on
-
-# Set inner/outer gaps
-gaps inner 8
-gaps outer -2
-
-# Gaps mode
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:OCR A Extended 14
@@ -290,7 +241,7 @@ client.focused #888888 #22222 #888888 #888888 #888888
 
 exec_always xinput set-prop "SynPS/2 Synaptics TouchPad"  "libinput Tapping Enabled" 1
 
-exec_always feh --bg-scale '/home/luca/Pictures/Wallpaper_2.png'
+exec_always feh --bg-scale '/home/luca/Pictures/Wallpaper_3.png'
 exec_always numlockx on
 #exec_always gnome-terminal
 exec --no-startup-id nm-applet
@@ -331,10 +282,10 @@ bindsym XF86Search exec --no-startup-id gnome-terminal
 bindsym $mod+XF86Search exec --no-startup-id /usr/bin/i3_Rsession.sh
 bindsym $mod+XF86Tools exec --no-startup-id gnome-system-monitor
 bindsym XF86Display exec --no-startup-id /usr/bin/i3_ext_mon.sh
-bindsym $mod+XF86Display exec --no-startup-id xrandr --output VGA1 --off --output DP-2-1 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-2-2 --off --output DP-2-3 --off --output eDP1 --primary --mode 2880x1620 --pos 0x1440 --rotate normal --output HDMI-2 --off --output HDMI-1 --off --output DP-2 --off --output DP-1 --off
-bindsym $mod+Shift+XF86Display exec --no-startup-id xrandr --output VIRTUAL1 --off --output eDP1 --mode 2880x1620 --pos 0x1080 --rotate normal --output DP1 --off --output DP2 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VGA1 --off
-
+bindsym $mod+XF86Display exec --no-startup-id xrandr --output VGA1 --off --output DP-2-1 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-2-2 --off --output DP-2-3 --off --output eDP1 --primary --mode 2880x1620 --pos 0x1440 --rotate normal --output HDMI-2 --off --output HDMI-1 --off --output DP-2 --off --output DP-1 --off & i3 restart
+bindsym $mod+Shift+XF86Display exec --no-startup-id xrandr --output VIRTUAL1 --off --output eDP1 --mode 2880x1620 --pos 0x1080 --rotate normal --output DP1 --off --output DP2 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VGA1 --off 
 bindsym $mod+Shift+b exec --no-startup-id /usr/bin/i3_toggleTrackpoint.sh
 bindsym $mod+t exec /opt/Telegram/Telegram
 bindsym $mod+g exec gedit
+bindsym $mod+f exec filezilla
 bindsym $mod+s exec /opt/google/chrome/google-chrome --new-window --app=https://play.spotify.com/collection/artists
