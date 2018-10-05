@@ -283,9 +283,10 @@ bindsym $mod+XF86Search exec --no-startup-id /usr/bin/i3_Rsession.sh
 bindsym $mod+XF86Tools exec --no-startup-id gnome-system-monitor
 bindsym XF86Display exec --no-startup-id /usr/bin/i3_ext_mon.sh
 bindsym $mod+XF86Display exec --no-startup-id xrandr --output VGA1 --off --output DP-2-1 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-2-2 --off --output DP-2-3 --off --output eDP1 --primary --mode 2880x1620 --pos 0x1440 --rotate normal --output HDMI-2 --off --output HDMI-1 --off --output DP-2 --off --output DP-1 --off & i3 restart
-bindsym $mod+Shift+XF86Display exec --no-startup-id xrandr --output VIRTUAL1 --off --output eDP1 --mode 2880x1620 --pos 0x1080 --rotate normal --output DP1 --off --output DP2 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VGA1 --off 
+bindsym $mod+Shift+XF86Display exec --no-startup-id xrandr --output VIRTUAL1 --off --output eDP1 --mode 2880x1620 --pos 0x1080 --rotate normal --output DP1 --off --output DP2 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VGA1 --off & i3 restart
 bindsym $mod+Shift+b exec --no-startup-id /usr/bin/i3_toggleTrackpoint.sh
 bindsym $mod+t exec /opt/Telegram/Telegram
 bindsym $mod+g exec gedit
 bindsym $mod+f exec filezilla
 bindsym $mod+s exec /opt/google/chrome/google-chrome --new-window --app=https://play.spotify.com/collection/artists
+bindsym $mod+Shift+i exec gnome-terminal -- ssh -p 4242 -D 9999 -C luca@2.230.96.105 &&  sleep 5 && firefox
