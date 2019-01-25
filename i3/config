@@ -5,6 +5,12 @@
 # this file and re-run i3-config-wizard(1).
 #
 
+exec_always xinput set-prop "Acrox USB & PS/2 Mouse" 320 0
+exec_always xinput set-prop "Acrox USB & PS/2 Mouse" 315 0.5
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad"  "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" 313 1
+exec --no-startup-id gpaste-client start
+exec_always xdotool key XF86Ungrab
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -44,7 +50,7 @@ bindsym $mod+d exec i3-dmenu-desktop
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 
 focus_follows_mouse no
 popup_during_fullscreen leave_fullscreen
@@ -102,14 +108,14 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 set $workspace1 "1: Terminals  "
-set $workspace2 "2: Docs "
+set $workspace2 "2: Docs "
 set $workspace3 "3: Web "
-set $workspace4 "4: Monitor "
-set $workspace5 "5: Music "
+set $workspace4 "4: Monitor "
+set $workspace5 "5: Music "
 set $workspace6 "6: VirtualBox "
 set $workspace7 "7: Graphics "
 set $workspace8 "8: Office "
-set $workspace10 "10: Comms  "
+set $workspace10 "10: Comms "
 
 workspace $workspace1 output DP2-1
 workspace $workspace2 output DP2-1
@@ -156,13 +162,19 @@ assign [class="Nemo"] $workspace2
 assign [class="Google-chrome"] $workspace3
 assign [class="Gnome-terminal"] $workspace1
 assign [class="Filezilla"] $workspace2
-assign [class="Gimp-2.8"] $workspace7
+assign [class="Gimp-2.10"] $workspace7
 assign [class="Inkscape"] $workspace7
 assign [class="VirtualBox"] $workspace6
 assign [class="libreoffice"] $workspace8
 assign [class="libreoffice-calc"] $workspace8
 
 for_window [title="Your Library - Artists"] move to workspace $workspace5
+for_window [title="Your Library - Artists"] focus
+for_window [class="Gnome-music"] move to workspace $workspace5
+for_window [class="Gnome-music"] focus
+for_window [class="VirtualBox"]  focus
+for_window [class="Gimp-2.10"] focus
+for_window [class="Inkscape"] focus
 for_window [title="Skype"] move to workspace $workspace10
 for_window [class="Gnome-calendar"] floating enable
 for_window [class="Gnome-calculator"] floating enable
@@ -176,6 +188,7 @@ for_window [class="Google-chrome"] focus
 for_window [class="Gnome-terminal"] focus
 for_window [class="Filezilla"] focus
 for_window [class="libreoffice"] move to workspace $workspace8
+for_window [class="libreoffice"] focus
 for_window [class="fiji-Main"] floating enable
 
 # reload the configuration file
@@ -232,7 +245,7 @@ bar {
     focused_workspace #33393b #33393b #ffffff
     inactive_workspace #222222 #222222 #888888
   }
-        font pango:FontAwesome , OCR A Extended Bold 14
+        font pango:FontAwesome , Bold 14
         position top
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
         tray_output eDP1
@@ -240,17 +253,14 @@ bar {
 
 client.focused #888888 #22222 #888888 #888888 #888888
 
-exec_always xinput set-prop "SynPS/2 Synaptics TouchPad"  "libinput Tapping Enabled" 1
-
 exec_always feh --bg-scale '/home/luca/Pictures/Wallpaper_3.png'
 exec_always numlockx on
 #exec_always gnome-terminal
 exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
 exec --no-startup-id gpaste-applet
-exec --no-startup-id /usr/bin/i3_toggleTrackpoint.sh
-exec --no-startup-id xscreensaver -display :0.0 &
-exec --no-startup-id xrdb < ~/.Xdefaults  && xscreensaver-command -restart
+
+exec --no-startup-id xrdb < ~/.Xdefaults && xscreensaver
 
 # Pulse Audio controls
 #bindsym XF86AudioRaiseVolume exec --no-startup-id i3_volume.sh up
@@ -261,8 +271,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute  $(pacmd list-sin
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute  $(pacmd list-sources|awk '/\* index:/{ print $3 }') toggle
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id sudo /usr/bin/i3_brightness.sh +4 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id sudo /usr/bin/i3_brightness.sh -4 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 bindsym Print exec --no-startup-id gnome-screenshot
 bindsym $mod+Print exec --no-startup-id gnome-screenshot -a
@@ -273,17 +283,15 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 bindsym XF86HomePage exec --no-startup-id /opt/google/chrome/google-chrome
 bindsym $mod+XF86HomePage exec --no-startup-id /opt/Telegram/Telegram & /opt/google/chrome/google-chrome --new-window --app=https://web.skype.com/en/ &
 bindsym XF86Calculator exec --no-startup-id gnome-calculator
-#bindsym $mod+l exec --no-startup-id i3lock_new -c '#232729' -o '#191d0f' -w '#572020' -l '#ffffff' -e -t
 bindsym $mod+l exec --no-startup-id xscreensaver-command -lock
-bindsym $mod+XF86Lock exec --no-startup-id i3lock -c 000000
 bindsym $mod+e exec --no-startup-id nemo --no-desktop
 bindsym XF86WLAN exec --no-startup-id i3_togglewifi.sh
-bindsym XF86Tools exec --no-startup-id i3_htop.sh
+bindsym XF86Tools exec --no-startup-id gnome-terminal -- htop
 bindsym XF86Search exec --no-startup-id gnome-terminal
 bindsym $mod+XF86Search exec --no-startup-id /usr/bin/i3_Rsession.sh
 bindsym $mod+XF86Tools exec --no-startup-id gnome-system-monitor
-bindsym XF86Display exec --no-startup-id /usr/bin/i3_ext_mon.sh
-bindsym $mod+XF86Display exec --no-startup-id xrandr --output VGA1 --off --output DP-2-1 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-2-2 --off --output DP-2-3 --off --output eDP1 --primary --mode 2880x1620 --pos 0x1440 --rotate normal --output HDMI-2 --off --output HDMI-1 --off --output DP-2 --off --output DP-1 --off & i3 restart
+bindsym XF86Display exec --no-startup-id arandr
+bindsym $mod+XF86Display exec --no-startup-id xrandr --output VGA1 --off --output DP-2-1 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-2-2 --off --output DP-2-3 --off --output eDP1 --primary --mode 2880x1620 --pos 0x1440 --rotate normal --output HDMI-2 --off --output HDMI1 --off --output DP-2 --off --output DP1 --off & i3 restart
 bindsym $mod+Shift+XF86Display exec --no-startup-id xrandr --output VIRTUAL1 --off --output eDP1 --mode 2880x1620 --pos 0x1080 --rotate normal --output DP1 --off --output DP2 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VGA1 --off & i3 restart
 bindsym $mod+Shift+b exec --no-startup-id /usr/bin/i3_toggleTrackpoint.sh
 bindsym $mod+t exec /opt/Telegram/Telegram
