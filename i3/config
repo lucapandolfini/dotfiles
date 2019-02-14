@@ -96,10 +96,10 @@ bindsym shift+KP_Add fullscreen toggle
 #bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -170,6 +170,8 @@ assign [class="libreoffice-calc"] $workspace8
 
 for_window [title="Your Library - Artists"] move to workspace $workspace5
 for_window [title="Your Library - Artists"] focus
+for_window [class="vlc"] move to workspace $workspace5
+for_window [class="vlc"] focus
 for_window [class="Gnome-music"] move to workspace $workspace5
 for_window [class="Gnome-music"] focus
 for_window [class="VirtualBox"]  focus
@@ -179,6 +181,7 @@ for_window [title="Skype"] move to workspace $workspace10
 for_window [class="Gnome-calendar"] floating enable
 for_window [class="Gnome-calculator"] floating enable
 for_window [title="R Graphics:"] floating enable
+for_window [title="codeblocks_term"] floating enable
 for_window [class="TelegramDesktop"] focus
 for_window [title="Skype"] focus
 for_window [class="Firefox"] focus
@@ -288,13 +291,13 @@ bindsym $mod+e exec --no-startup-id nemo --no-desktop
 bindsym XF86WLAN exec --no-startup-id i3_togglewifi.sh
 bindsym XF86Tools exec --no-startup-id gnome-terminal -- htop
 bindsym XF86Search exec --no-startup-id gnome-terminal
-bindsym $mod+XF86Search exec --no-startup-id /usr/bin/i3_Rsession.sh
+bindsym $mod+XF86Search exec --no-startup-id /home/luca/.config/i3/i3_Rsession.sh
 bindsym $mod+XF86Tools exec --no-startup-id gnome-system-monitor
 bindsym XF86Display exec --no-startup-id arandr
-bindsym $mod+XF86Display exec --no-startup-id xrandr --output VGA1 --off --output DP-2-1 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-2-2 --off --output DP-2-3 --off --output eDP1 --primary --mode 2880x1620 --pos 0x1440 --rotate normal --output HDMI-2 --off --output HDMI1 --off --output DP-2 --off --output DP1 --off & i3 restart
-bindsym $mod+Shift+XF86Display exec --no-startup-id xrandr --output VIRTUAL1 --off --output eDP1 --mode 2880x1620 --pos 0x1080 --rotate normal --output DP1 --off --output DP2 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VGA1 --off & i3 restart
+bindsym $mod+XF86Display exec --no-startup-id xrandr --output DP2 --off --output DP1 --off --output DP2-1 --mode 2560x1440 --pos 0x0 --rotate normal --output DP2-2 --off --output DP2-3 --off --output HDMI2 --off --output HDMI1 --off --output eDP1 --primary --mode 2880x1620 --pos 0x1440 --rotate normal --output VGA1 --off & i3 restart
+bindsym $mod+Shift+XF86Display exec --no-startup-id xrandr --output DP2 --off --output DP1 --off --output HDMI2 --off --output HDMI1 --primary --mode 1920x1080i --pos 280x424 --rotate normal --output eDP1 --off --output VGA1 --off & i3 restart
 bindsym $mod+Shift+b exec --no-startup-id /usr/bin/i3_toggleTrackpoint.sh
-bindsym $mod+t exec /opt/Telegram/Telegram
+bindsym $mod+t exec telegram-desktop
 bindsym $mod+g exec gedit
 bindsym $mod+f exec filezilla
 bindsym $mod+s exec /opt/google/chrome/google-chrome --new-window --app=https://play.spotify.com/collection/artists
