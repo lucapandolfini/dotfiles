@@ -1,24 +1,13 @@
 #!/bin/bash
 
-# base dir for backlight class
-basedir="/sys/class/backlight/"
+old_brightness=$(xbacklight -get)
 
-# get the backlight handler
-handler=$basedir$(ls $basedir)"/"
+#printf %.0f'%%' $old_brightness
 
-# get current brightness
-old_brightness=$(cat $handler"brightness")
-
-# get max brightness
-max_brightness=$(cat $handler"max_brightness")
-
-# get current brightness %
-old_brightness_p=$(( 100 * $old_brightness / $max_brightness ))
-
-printf $old_brightness_p'%%'
+echo "${old_brightness%%.*}%"
 
 case $BLOCK_BUTTON in
-  3) /usr/bin/i3_toggle_brightness.sh ;;
-  4) sudo /usr/bin/i3_brightness.sh +2 ;; # scroll up, increase
-  5) sudo /usr/bin/i3_brightness.sh -2 ;; # scroll down, decrease
+  3) /usr/share/i3blocks/i3_brightness_toggle.sh ;;
+  4) xbacklight -inc 1;; # scroll up, increase
+  5) xbacklight -dec 1 ;; # scroll down, decrease
 esac
